@@ -1,0 +1,8 @@
+node_modules/
+config.js
+.DS_Store
+coverage
+*.pem
+*.cer
+.env
+login.sh
