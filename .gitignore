@@ -6,3 +6,6 @@ coverage
 *.cer
 .env
 login.sh
+csv/
+parse-csv.js
+aggregation.js
