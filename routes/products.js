@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
   try {
     let paramId = parseInt(req.params.id)
     const productId = await Products.find({ 'id': paramId }, {_id: 0});
-    res.json(productId);
+    res.json(productId[0]);
   } catch (err) {
     res.json({message: err});
   }
@@ -32,7 +32,31 @@ router.get('/:id/styles', async (req, res) => {
   try {
     let paramId = parseInt(req.params.id)
     const stylesId = await ProductIdStyles.find({ '_id': paramId }, {_id: 0});
-    res.json(stylesId);
+    let stylesObj = stylesId[0];
+    let returnObj = {};
+    returnObj['product_id'] = stylesObj.product_id;
+
+    let resultsArr = stylesObj.results;
+
+    let newResultsArr = resultsArr.map((eachStyleObj) => {
+      let newStyleObj = {};
+      newStyleObj['style_id'] = eachStyleObj.style_id;
+      newStyleObj['name'] = eachStyleObj.name;
+      newStyleObj['original_price'] = eachStyleObj.original_price;
+      if (eachStyleObj.sale_price === 'null') {
+        newStyleObj['sale_price'] =  null;
+      } else {
+        newStyleObj['sale_price'] = eachStyleObj.sale_price;
+      }
+      newStyleObj['photos'] = eachStyleObj.photos;
+      newStyleObj['skus'] = eachStyleObj.skus;
+
+      return newStyleObj;
+    });
+
+    returnObj['results'] = newResultsArr;
+
+    res.json(returnObj);
   } catch (err) {
     res.json({message: err})
   }
