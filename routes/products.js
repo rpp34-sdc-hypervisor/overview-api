@@ -44,7 +44,7 @@ router.get('/:id/styles', async (req, res) => {
       newStyleObj['name'] = eachStyleObj.name;
       newStyleObj['original_price'] = eachStyleObj.original_price;
       if (eachStyleObj.sale_price === 'null') {
-        newStyleObj['sale_price'] =  null;
+        newStyleObj['sale_price'] =  '0';
       } else {
         newStyleObj['sale_price'] = eachStyleObj.sale_price;
       }
