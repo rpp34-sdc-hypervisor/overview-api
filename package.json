@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage --detectOpenHandles",
+    "test:watch": "jest --watch",
     "api": "npx nodemon server.js",
     "db": "npx nodemon aggregation.js"
   },

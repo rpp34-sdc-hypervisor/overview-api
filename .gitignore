@@ -9,3 +9,4 @@ login.sh
 csv/
 parse-csv.js
 aggregation.js
+script.js

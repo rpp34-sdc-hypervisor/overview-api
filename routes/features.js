@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Features = require('../models/features');
 
+
+
 router.get('/', async (req, res) => {
   try {
     const features = await Features.find().limit(5).sort({id: 1});

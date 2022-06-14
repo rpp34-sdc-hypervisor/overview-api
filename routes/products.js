@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const _ = require("lodash");
 const Products = require('../models/products');
 const ProductIdStyles = require('../models/productIdStyles');
+const mongoose = require('mongoose');
+
 
 router.get('/', async (req, res) => {
   try {
@@ -11,6 +12,9 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.json({ message: err });
   }
+  // finally {
+  //   mongoose.disconnect();
+  // }
 });
 
 
@@ -44,7 +48,7 @@ router.get('/:id/styles', async (req, res) => {
       newStyleObj['name'] = eachStyleObj.name;
       newStyleObj['original_price'] = eachStyleObj.original_price;
       if (eachStyleObj.sale_price === 'null') {
-        newStyleObj['sale_price'] =  '0';
+        newStyleObj['sale_price'] =  null;
       } else {
         newStyleObj['sale_price'] = eachStyleObj.sale_price;
       }
@@ -61,7 +65,6 @@ router.get('/:id/styles', async (req, res) => {
     res.json({message: err})
   }
 })
-
 
 
 module.exports = router;
