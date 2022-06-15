@@ -2,22 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const productRoute = require('./routes/products.js');
-const photoRoute = require('./routes/photos.js');
-const featureRoute = require('./routes/features.js');
-const styleRoute = require('./routes/styles.js');
-const skuRoute = require('./routes/skus.js');
 
 const app = express();
 const PORT = 3013;
 
 let dbLink = 'mongodb://localhost:27017/sdc';
 
-
 /* comment out here for testing 1 of 2 */
 
-mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.log(err.message));
+// mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .then(() => console.log("Connected to MongoDB"))
+//   .catch((err) => console.log(err.message));
 
 /* comment out here for testing 1 of 2 */
 
@@ -26,10 +21,6 @@ mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(bodyParser.json());
 
 app.use('/products', productRoute);
-app.use('/photos', photoRoute);
-app.use('/features', featureRoute);
-app.use('/styles', styleRoute);
-app.use('/skus', skuRoute);
 
 
 app.get('/', (req, res) => {
@@ -39,8 +30,10 @@ app.get('/', (req, res) => {
 
 /* comment out here for testing 2 of 2 */
 
-app.listen(PORT, () => {
-  console.log(`API.js running on port: http://localhost:${PORT}`)
-});
+// app.listen(PORT, () => {
+//   console.log(`API.js running on port: http://localhost:${PORT}`)
+// });
 
 /* comment out here for testing 2 of 2 */
+
+module.exports = app;

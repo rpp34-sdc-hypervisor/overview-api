@@ -12,14 +12,7 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.json({ message: err });
   }
-  // finally {
-  //   mongoose.disconnect();
-  // }
 });
-
-
-// params.id is going to be the id, so the product data returned will of the one id
-// need to also return features based on lookup of product_id
 
 router.get('/:id', async (req, res) => {
   try {
