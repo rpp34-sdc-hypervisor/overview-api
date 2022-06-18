@@ -10,9 +10,9 @@ let dbLink = 'mongodb://localhost:27017/sdc';
 
 /* comment out here for testing 1 of 2 */
 
-// mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => console.log("Connected to MongoDB"))
-//   .catch((err) => console.log(err.message));
+mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.log(err.message));
 
 /* comment out here for testing 1 of 2 */
 
@@ -30,9 +30,9 @@ app.get('/', (req, res) => {
 
 /* comment out here for testing 2 of 2 */
 
-// app.listen(PORT, () => {
-//   console.log(`API.js running on port: http://localhost:${PORT}`)
-// });
+app.listen(PORT, () => {
+  console.log(`API.js running on port: http://localhost:${PORT}`)
+});
 
 /* comment out here for testing 2 of 2 */
 
