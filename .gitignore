@@ -6,8 +6,13 @@ coverage
 *.cer
 .env
 login.sh
+logindb.sh
+loginapi.sh
 csv/
 parse-csv.js
 aggregation.js
 script.js
 parse-csv.js
+dump
+productidstyles.json
+products.json
