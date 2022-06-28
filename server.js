@@ -2,17 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const productRoute = require('./routes/products.js');
+require('dotenv').config();
+
+const dbLink = process.env.MDB;
 
 const app = express();
 const PORT = 3013;
 
-let dbLink = 'mongodb://localhost:27017/sdc';
 
 /* comment out here for testing 1 of 2 */
 
 mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.log(err.message));
+  .catch((err) => console.log('mongoose connection err:', err));
 
 /* comment out here for testing 1 of 2 */
 
