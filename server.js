@@ -5,6 +5,7 @@ const productRoute = require('./routes/products.js');
 require('dotenv').config();
 
 const dbLink = process.env.MDB;
+const awsLink = 'mongodb://localhost:8000/sdc';
 
 const app = express();
 const PORT = 3013;
@@ -12,8 +13,8 @@ const PORT = 3013;
 
 /* comment out here for testing 1 of 2 */
 
-mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Connected to MongoDB"))
+mongoose.connect(awsLink || process.env.MDB, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB", awsLink))
   .catch((err) => console.log('mongoose connection err:', err));
 
 /* comment out here for testing 1 of 2 */
@@ -33,7 +34,7 @@ app.get('/', (req, res) => {
 /* comment out here for testing 2 of 2 */
 
 app.listen(PORT, () => {
-  console.log(`API.js running on port: http://localhost:${PORT}`)
+  console.log(`API.js running on port ${PORT}`)
 });
 
 /* comment out here for testing 2 of 2 */
