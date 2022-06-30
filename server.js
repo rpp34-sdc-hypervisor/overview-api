@@ -15,7 +15,7 @@ const PORT = 3013;
 
 mongoose.connect(process.env.MDB || awsLink, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB", awsLink))
-  .catch((err) => console.log('mongoose connection err:', err));
+  .catch((err) => console.log('mongoose connection err:', process.env.MDB, awsLink, err));
 
 /* comment out here for testing 1 of 2 */
 
