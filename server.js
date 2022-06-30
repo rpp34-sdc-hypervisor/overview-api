@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const productRoute = require('./routes/products.js');
+const loaderRoute = require('./routes/loader.js');
 const DB = require('./config.js')
 
 const awsLink = 'mongodb://localhost:8000/sdc';
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 
 app.use('/products', productRoute);
 
+app.use(loaderRoute);
 
 app.get('/', (req, res) => {
   res.send('Hello from root directory');
