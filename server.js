@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const productRoute = require('./routes/products.js');
-const loaderRoute = require('./routes/loader.js');
 const DB = require('./config.js')
 
 const awsLink = 'mongodb://localhost:8000/sdc';
@@ -23,9 +22,15 @@ mongoose.connect(DB || awsLink, { useNewUrlParser: true, useUnifiedTopology: tru
 
 app.use(bodyParser.json());
 
+
+app.get(`/loaderio-1e7749863d6c4e8d271921474a8e777f`,  (req, res) => {
+  const text = `loaderio-1e7749863d6c4e8d271921474a8e777f`;
+  res.send(text);
+})
+
 app.use('/products', productRoute);
 
-app.use(loaderRoute);
+
 
 app.get('/', (req, res) => {
   res.send('Hello from root directory');
