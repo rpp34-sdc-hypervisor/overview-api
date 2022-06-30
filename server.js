@@ -2,9 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const productRoute = require('./routes/products.js');
-require('dotenv').config();
+const DB = require('./config.js')
 
-const dbLink = process.env.MDB;
 const awsLink = 'mongodb://localhost:8000/sdc';
 
 const app = express();
@@ -13,7 +12,7 @@ const PORT = 3013;
 
 /* comment out here for testing 1 of 2 */
 
-mongoose.connect(process.env.MDB || awsLink, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(DB || awsLink, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB", awsLink))
   .catch((err) => console.log('mongoose connection err:', process.env.MDB, awsLink, err));
 
@@ -34,7 +33,7 @@ app.get('/', (req, res) => {
 /* comment out here for testing 2 of 2 */
 
 app.listen(PORT, () => {
-  console.log(`API.js running on port ${PORT}`)
+  console.log(`API.js running on port ${PORT}, ${DB}, ${awsLink}`)
 });
 
 /* comment out here for testing 2 of 2 */
