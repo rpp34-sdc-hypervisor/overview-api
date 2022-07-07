@@ -23,8 +23,8 @@ mongoose.connect(DB || awsLink, { useNewUrlParser: true, useUnifiedTopology: tru
 app.use(bodyParser.json());
 
 
-app.get(`/loaderio-720e9ca446233aaf6af728dab75d3b61`,  (req, res) => {
-  const text = `loaderio-720e9ca446233aaf6af728dab75d3b61`;
+app.get(`/loaderio-d279fe28d68897109ec340d9db7daf91`,  (req, res) => {
+  const text = `loaderio-d279fe28d68897109ec340d9db7daf91`;
   res.send(text);
 })
 
